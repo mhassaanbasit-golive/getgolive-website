@@ -1,0 +1,6 @@
+{
+  "name": "GetGoLive",
+  "description": "Studio building custom websites for premier real estate firms and established businesses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
