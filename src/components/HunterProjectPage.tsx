@@ -3,9 +3,9 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ModalType, PageType } from '../types';
 
-const hunterHeroImg = `${import.meta.env.BASE_URL}Hunter-case-study-image.png`;
-const hunterMobileImg = `${import.meta.env.BASE_URL}hunter-real-estate-mobile-mockup.png`;
-const hunterBotImg = `${import.meta.env.BASE_URL}hunter-real-estate-bot-image.png`;
+const hunterHeroImg = 'https://res.cloudinary.com/cyfb9slf/image/upload/v1787422669/Hunter-case-study-image.png';
+const hunterMobileImg = 'https://res.cloudinary.com/cyfb9slf/image/upload/v1787422669/hunter-real-estate-mobile-mockup.png';
+const hunterBotImg = 'https://res.cloudinary.com/cyfb9slf/image/upload/v1787422667/hunter-real-estate-bot-image.png';
 
 interface HunterProjectPageProps {
   onNavigate: (page: PageType) => void;

@@ -28,7 +28,7 @@ export const PROJECTS: Project[] = [
     name: 'Hunter Real Estate Group',
     city: 'Houston, TX',
     description: 'The old site looked like 2008. The new one feels like the future.',
-    heroImage: 'Hunter-case-study-image.png',
+    heroImage: 'https://res.cloudinary.com/cyfb9slf/image/upload/v1787422669/Hunter-case-study-image.png',
     gradient: 'linear-gradient(135deg, #18181b 0%, #27272a 100%)',
     liveSiteUrl: '#',
     redesignUrl: '#'
