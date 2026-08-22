@@ -14,21 +14,21 @@ export interface FaqItem {
 
 export const PROJECTS: Project[] = [
   {
-    id: 'luxury-residential-brokerage',
-    name: 'Luxury Residential Brokerage',
+    id: 'scott-carlson-luxury-real-estate',
+    name: 'Scott Carlson — Luxury Real Estate, Culture & Media',
     city: 'Dallas, TX',
-    description: 'A boutique firm specializing in high-end residential sales and marketing across the Dallas-Fort Worth metroplex.',
-    heroImage: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1400&auto=format&fit=crop',
+    description: 'Luxury brokerage and filmmaking in Lakewood & Old East Dallas featuring 40+ years of distinguished expertise.',
+    heroImage: '/scott-carlson-cover.jpg',
     gradient: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
     liveSiteUrl: '#',
     redesignUrl: '#'
   },
   {
-    id: 'commercial-real-estate-advisors',
-    name: 'Commercial Real Estate Advisors',
+    id: 'hunter-real-estate-group',
+    name: 'Hunter Real Estate Group',
     city: 'Houston, TX',
-    description: 'Full-service commercial real estate brokerage offering leasing, sales, and investment advisory for institutional clients.',
-    heroImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1400&auto=format&fit=crop',
+    description: 'The old site looked like 2008. The new one feels like the future.',
+    heroImage: '/Hunter-case-study-image.png',
     gradient: 'linear-gradient(135deg, #18181b 0%, #27272a 100%)',
     liveSiteUrl: '#',
     redesignUrl: '#'

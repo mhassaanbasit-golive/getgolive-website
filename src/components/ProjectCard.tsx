@@ -71,10 +71,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect, ind
         {/* Subtle Dark Linear Gradient Scrim on hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent opacity-50 group-hover:opacity-90 transition-opacity duration-300 pointer-events-none" />
 
-        {/* Top-Right Badge: City Tag */}
-        <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white/90 card-label-font font-sans font-medium text-[11px] tracking-[0.08em] uppercase">
-          {project.city}
-        </div>
+
 
         {/* Hover Label (Fade + Slide): View Project Pill */}
         <div className="card-hover-element hover-pill absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 pointer-events-none">
@@ -90,9 +87,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect, ind
           <h3 className="font-headline font-bold text-[var(--text-primary)] text-[16px] sm:text-[20px] md:text-[22px] leading-tight tracking-[-0.02em] group-hover:opacity-90 transition-opacity truncate">
             {project.name}
           </h3>
-          <p className="font-body text-[12px] sm:text-[14px] text-[var(--text-muted)] mt-0.5 sm:mt-1 truncate">
-            {project.city}
-          </p>
         </div>
 
         {/* Bottom-Right Corner Arrow Icon translates translateX(6px) on hover */}

@@ -18,6 +18,7 @@ import { FaqSection } from './components/FaqSection';
 import { FooterSection } from './components/FooterSection';
 import { ProcessPage } from './components/ProcessPage';
 import { ProjectsPage } from './components/ProjectsPage';
+import { HunterProjectPage } from './components/HunterProjectPage';
 import { Modals } from './components/Modals';
 import { FullscreenMenu } from './components/FullscreenMenu';
 import { AIChatAssistant } from './components/AIChatAssistant';
@@ -87,6 +88,10 @@ export default function App() {
   };
 
   const handleSelectProject = (project: Project) => {
+    if (project.id === 'hunter-real-estate-group') {
+      handleNavigate('hunter-project');
+      return;
+    }
     setSelectedProject(project);
     setActiveModal('project-detail');
   };
@@ -203,6 +208,26 @@ export default function App() {
               />
 
               {/* Shared Footer & Contact */}
+              <FooterSection
+                onNavigate={handleNavigate}
+                onOpenModal={handleOpenModal}
+                selectedPlan={selectedPlanName}
+              />
+            </motion.div>
+          )}
+
+          {currentPage === 'hunter-project' && (
+            <motion.div
+              key="hunter-project"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <HunterProjectPage
+                onNavigate={handleNavigate}
+                onOpenModal={handleOpenModal}
+              />
               <FooterSection
                 onNavigate={handleNavigate}
                 onOpenModal={handleOpenModal}
