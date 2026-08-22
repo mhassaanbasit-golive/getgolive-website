@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
     name: 'Scott Carlson — Luxury Real Estate, Culture & Media',
     city: 'Dallas, TX',
     description: 'Luxury brokerage and filmmaking in Lakewood & Old East Dallas featuring 40+ years of distinguished expertise.',
-    heroImage: '/scott-carlson-cover.jpg',
+    heroImage: 'scott-carlson-cover.jpg',
     gradient: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
     liveSiteUrl: '#',
     redesignUrl: '#'
@@ -28,7 +28,7 @@ export const PROJECTS: Project[] = [
     name: 'Hunter Real Estate Group',
     city: 'Houston, TX',
     description: 'The old site looked like 2008. The new one feels like the future.',
-    heroImage: '/Hunter-case-study-image.png',
+    heroImage: 'Hunter-case-study-image.png',
     gradient: 'linear-gradient(135deg, #18181b 0%, #27272a 100%)',
     liveSiteUrl: '#',
     redesignUrl: '#'
