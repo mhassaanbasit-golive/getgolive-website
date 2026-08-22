@@ -1,6 +1,11 @@
+/// <reference types="vite/client" />
 import React from 'react';
 import { motion } from 'motion/react';
 import { ModalType, PageType } from '../types';
+
+const hunterHeroImg = `${import.meta.env.BASE_URL}Hunter-case-study-image.png`;
+const hunterMobileImg = `${import.meta.env.BASE_URL}hunter-real-estate-mobile-mockup.png`;
+const hunterBotImg = `${import.meta.env.BASE_URL}hunter-real-estate-bot-image.png`;
 
 interface HunterProjectPageProps {
   onNavigate: (page: PageType) => void;
@@ -32,7 +37,7 @@ export const HunterProjectPage: React.FC<HunterProjectPageProps> = ({ onNavigate
 
           <div className="w-full aspect-[16/9] md:aspect-[21/9] rounded-[24px] overflow-hidden">
             <img
-              src="/Hunter-case-study-image.png"
+              src={hunterHeroImg}
               alt="Hunter Real Estate Group Hero"
               className="w-full h-full object-cover"
             />
@@ -80,7 +85,7 @@ export const HunterProjectPage: React.FC<HunterProjectPageProps> = ({ onNavigate
             <div className="w-full max-w-[320px] bg-[var(--surface-card)] rounded-[28px] p-4 border border-[var(--border-color)] shadow-2xl">
               <div className="w-full aspect-[9/16] rounded-[20px] overflow-hidden bg-black">
                 <img
-                  src="/hunter-real-estate-mobile-mockup.png"
+                  src={hunterMobileImg}
                   alt="Hunter Real Estate Mobile Mockup"
                   className="w-full h-full object-cover"
                 />
@@ -103,7 +108,7 @@ export const HunterProjectPage: React.FC<HunterProjectPageProps> = ({ onNavigate
           {/* AI Chatbot Image (Uncropped / Natural Aspect Ratio) */}
           <div className="w-full max-w-[800px] mx-auto my-6 rounded-[24px] overflow-hidden bg-[var(--surface-card)] border border-[var(--border-color)] p-2 sm:p-4 shadow-xl">
             <img
-              src="/hunter-real-estate-bot-image.png"
+              src={hunterBotImg}
               alt="Hunter Real Estate Bot Interface"
               className="w-full h-auto object-contain rounded-[16px]"
             />
@@ -153,3 +158,4 @@ export const HunterProjectPage: React.FC<HunterProjectPageProps> = ({ onNavigate
     </div>
   );
 };
+
