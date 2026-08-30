@@ -1,4 +1,3 @@
-/// <reference types="vite/client" />
 import React from 'react';
 import { motion } from 'motion/react';
 import { ModalType, PageType } from '../types';
@@ -7,12 +6,13 @@ const byrneHeroImg = 'https://res.cloudinary.com/cyfb9slf/image/upload/v17880394
 const byrneMobileImg = 'https://res.cloudinary.com/cyfb9slf/image/upload/v1788039459/byrne-company-mobile-mockup.png';
 const byrneBotImg = 'https://res.cloudinary.com/cyfb9slf/image/upload/v1788039452/byrne-company-bot-image.png';
 
-interface HunterProjectPageProps {
+interface ByrneCompanyPageProps {
   onNavigate: (page: PageType) => void;
   onOpenModal: (modal: ModalType) => void;
+  previousPage?: PageType;
 }
 
-export const HunterProjectPage: React.FC<HunterProjectPageProps> = ({ onNavigate, onOpenModal }) => {
+export const ByrneCompanyPage: React.FC<ByrneCompanyPageProps> = ({ onNavigate, onOpenModal, previousPage = 'home' }) => {
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pt-24 sm:pt-32 pb-32 px-6 sm:px-10 md:px-16">
       <div className="max-w-[900px] mx-auto space-y-24 sm:space-y-32">
@@ -22,7 +22,7 @@ export const HunterProjectPage: React.FC<HunterProjectPageProps> = ({ onNavigate
           <motion.button
             whileHover={{ x: -4, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
             whileTap={{ scale: 0.96 }}
-            onClick={() => onNavigate('home')}
+            onClick={() => onNavigate(previousPage)}
             className="inline-flex items-center gap-2 text-[13px] sm:text-[14px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
           >
             <span>← Back to Portfolio</span>
@@ -152,4 +152,3 @@ export const HunterProjectPage: React.FC<HunterProjectPageProps> = ({ onNavigate
     </div>
   );
 };
-

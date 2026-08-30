@@ -1,18 +1,18 @@
-/// <reference types="vite/client" />
 import React from 'react';
 import { motion } from 'motion/react';
 import { ModalType, PageType } from '../types';
 
-const byrneHeroImg = 'https://res.cloudinary.com/cyfb9slf/image/upload/v1788039458/byrne-company-case-study-image.png';
-const byrneMobileImg = 'https://res.cloudinary.com/cyfb9slf/image/upload/v1788039459/byrne-company-mobile-mockup.png';
-const byrneBotImg = 'https://res.cloudinary.com/cyfb9slf/image/upload/v1788039452/byrne-company-bot-image.png';
+const scottHeroImg = 'https://res.cloudinary.com/cyfb9slf/image/upload/v1788039436/scott-carlson-case-study-image.png';
+const scottMobileImg = 'https://res.cloudinary.com/cyfb9slf/image/upload/v1788039432/scott-carlson-mobile-mockup.png';
+const scottBotImg = 'https://res.cloudinary.com/cyfb9slf/image/upload/v1788039433/scott-carlson-bot-image.png';
 
-interface HunterProjectPageProps {
+interface ScottCarlsonPageProps {
   onNavigate: (page: PageType) => void;
   onOpenModal: (modal: ModalType) => void;
+  previousPage?: PageType;
 }
 
-export const HunterProjectPage: React.FC<HunterProjectPageProps> = ({ onNavigate, onOpenModal }) => {
+export const ScottCarlsonPage: React.FC<ScottCarlsonPageProps> = ({ onNavigate, onOpenModal, previousPage = 'home' }) => {
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pt-24 sm:pt-32 pb-32 px-6 sm:px-10 md:px-16">
       <div className="max-w-[900px] mx-auto space-y-24 sm:space-y-32">
@@ -22,7 +22,7 @@ export const HunterProjectPage: React.FC<HunterProjectPageProps> = ({ onNavigate
           <motion.button
             whileHover={{ x: -4, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
             whileTap={{ scale: 0.96 }}
-            onClick={() => onNavigate('home')}
+            onClick={() => onNavigate(previousPage)}
             className="inline-flex items-center gap-2 text-[13px] sm:text-[14px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
           >
             <span>← Back to Portfolio</span>
@@ -32,19 +32,19 @@ export const HunterProjectPage: React.FC<HunterProjectPageProps> = ({ onNavigate
         {/* SECTION 1: THE HERO */}
         <section className="space-y-8">
           <h1 className="font-headline font-bold text-[clamp(2.5rem,6vw,4.5rem)] tracking-[-0.03em] leading-[1.05]">
-            Byrne Company
+            Scott Carlson
           </h1>
 
           <div className="w-full aspect-[16/9] md:aspect-[21/9] rounded-[24px] overflow-hidden">
             <img
-              src={byrneHeroImg}
-              alt="Byrne Company Hero"
+              src={scottHeroImg}
+              alt="Scott Carlson Hero"
               className="w-full h-full object-cover"
             />
           </div>
 
           <p className="text-[17px] sm:text-[21px] text-[var(--text-muted)] font-normal leading-[1.6] max-w-3xl">
-            Active Commercial Brokerage: Operating as a boutique commercial real estate and shopping center investment brokerage in Dallas, TX.
+            Licensed luxury real estate broker with over 40 years of experience (since 1985). Specializing in architecturally significant properties in Lakewood and Old East Dallas. Filmmaker with 40+ short films and author of a weekly cultural email blog reaching 12,000+ global subscribers.
           </p>
         </section>
 
@@ -82,8 +82,8 @@ export const HunterProjectPage: React.FC<HunterProjectPageProps> = ({ onNavigate
             <div className="w-full max-w-[320px] bg-[var(--surface-card)] rounded-[28px] p-4 border border-[var(--border-color)] shadow-2xl">
               <div className="w-full aspect-[9/16] rounded-[20px] overflow-hidden bg-black">
                 <img
-                  src={byrneMobileImg}
-                  alt="Byrne Company Mobile Mockup"
+                  src={scottMobileImg}
+                  alt="Scott Carlson Mobile Mockup"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -105,8 +105,8 @@ export const HunterProjectPage: React.FC<HunterProjectPageProps> = ({ onNavigate
           {/* AI Chatbot Image (Uncropped / Natural Aspect Ratio) */}
           <div className="w-full max-w-[800px] mx-auto my-6 rounded-[24px] overflow-hidden bg-[var(--surface-card)] border border-[var(--border-color)] p-2 sm:p-4 shadow-xl">
             <img
-              src={byrneBotImg}
-              alt="Byrne Company Bot Interface"
+              src={scottBotImg}
+              alt="Scott Carlson Bot Interface"
               className="w-full h-auto object-contain rounded-[16px]"
             />
           </div>
@@ -152,4 +152,3 @@ export const HunterProjectPage: React.FC<HunterProjectPageProps> = ({ onNavigate
     </div>
   );
 };
-

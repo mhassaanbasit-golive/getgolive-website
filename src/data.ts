@@ -14,91 +14,41 @@ export interface FaqItem {
 
 export const PROJECTS: Project[] = [
   {
-    id: 'scott-carlson-luxury-real-estate',
-    name: 'Scott Carlson — Luxury Real Estate, Culture & Media',
-    city: 'Dallas, TX',
-    description: 'Luxury brokerage and filmmaking in Lakewood & Old East Dallas featuring 40+ years of distinguished expertise.',
-    heroImage: 'scott-carlson-cover.jpg',
-    gradient: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
-    liveSiteUrl: '#',
-    redesignUrl: '#'
-  },
-  {
     id: 'hunter-real-estate-group',
     name: 'Hunter Real Estate Group',
     city: 'Houston, TX',
-    description: 'The old site looked like 2008. The new one feels like the future.',
+    description: 'A clean, modern redesign built to make luxury real estate feel effortless.',
     heroImage: 'https://res.cloudinary.com/cyfb9slf/image/upload/v1787422669/Hunter-case-study-image.png',
     gradient: 'linear-gradient(135deg, #18181b 0%, #27272a 100%)',
     liveSiteUrl: '#',
     redesignUrl: '#'
   },
   {
-    id: 'property-development-group',
-    name: 'Property Development Group',
-    city: 'Austin, TX',
-    description: 'An independent development firm focused on mixed-use and multi-family projects in Texas\'s fastest-growing markets.',
-    heroImage: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1400&auto=format&fit=crop',
+    id: 'byrne-company',
+    name: 'Byrne Company',
+    city: 'Dallas, TX',
+    description: 'Active Commercial Brokerage: Operating as a boutique commercial real estate and shopping center investment brokerage in Dallas, TX.',
+    heroImage: 'https://res.cloudinary.com/cyfb9slf/image/upload/v1788039458/byrne-company-case-study-image.png',
+    gradient: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+    liveSiteUrl: '#',
+    redesignUrl: '#'
+  },
+  {
+    id: 'rer-solutions',
+    name: 'Rer Solutions',
+    city: 'Dallas, TX',
+    description: 'Commercial Construction & CRE Consulting operating out of Dallas, TX. Handles commercial project management, construction oversight, and facility management.',
+    heroImage: 'https://res.cloudinary.com/cyfb9slf/image/upload/v1788040117/rer-solutions-case-study-image.png',
     gradient: 'linear-gradient(135deg, #0c1821 0%, #1b2a4a 100%)',
     liveSiteUrl: '#',
     redesignUrl: '#'
   },
   {
-    id: 'legacy-real-estate-partners',
-    name: 'Legacy Real Estate Partners',
-    city: 'San Antonio, TX',
-    description: 'A family-owned brokerage with deep roots in the Texas Hill Country, serving both buyers and sellers with personalized care.',
-    heroImage: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1400&auto=format&fit=crop',
-    gradient: 'linear-gradient(135deg, #1c1917 0%, #292524 100%)',
-    liveSiteUrl: '#',
-    redesignUrl: '#'
-  },
-  {
-    id: 'urban-living-realty',
-    name: 'Urban Living Realty',
-    city: 'Fort Worth, TX',
-    description: 'Modern urban real estate services tailored for young professionals and investors looking for downtown and near-downtown properties.',
-    heroImage: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=1400&auto=format&fit=crop',
-    gradient: 'linear-gradient(135deg, #111827 0%, #1f2937 100%)',
-    liveSiteUrl: '#',
-    redesignUrl: '#'
-  },
-  {
-    id: 'texas-ranch-land-group',
-    name: 'Texas Ranch & Land Group',
-    city: 'Amarillo, TX',
-    description: 'Specialists in agricultural land, ranches, and large-acreage properties across West Texas and the Panhandle.',
-    heroImage: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1400&auto=format&fit=crop',
-    gradient: 'linear-gradient(135deg, #141e16 0%, #203124 100%)',
-    liveSiteUrl: '#',
-    redesignUrl: '#'
-  },
-  {
-    id: 'vanguard-commercial-properties',
-    name: 'Vanguard Commercial Properties',
-    city: 'Plano, TX',
-    description: 'Strategic commercial real estate solutions for office, retail, and industrial spaces in the Dallas suburbs.',
-    heroImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1400&auto=format&fit=crop',
-    gradient: 'linear-gradient(135deg, #09090b 0%, #18181b 100%)',
-    liveSiteUrl: '#',
-    redesignUrl: '#'
-  },
-  {
-    id: 'blue-sky-real-estate',
-    name: 'Blue Sky Real Estate',
-    city: 'Houston, TX',
-    description: 'Residential real estate with a focus on master-planned communities and new construction in Houston\'s top school districts.',
-    heroImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1400&auto=format&fit=crop',
-    gradient: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-    liveSiteUrl: '#',
-    redesignUrl: '#'
-  },
-  {
-    id: 'heritage-home-advisors',
-    name: 'Heritage Home Advisors',
+    id: 'scott-carlson',
+    name: 'Scott Carlson',
     city: 'Dallas, TX',
-    description: 'A boutique firm dedicated to preserving and marketing historic properties and architecturally significant homes in Old East Dallas.',
-    heroImage: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1400&auto=format&fit=crop',
+    description: 'Licensed luxury real estate broker with over 40 years of experience (since 1985). Specializing in architecturally significant properties in Lakewood and Old East Dallas. Filmmaker with 40+ short films and author of a weekly cultural email blog reaching 12,000+ global subscribers.',
+    heroImage: 'https://res.cloudinary.com/cyfb9slf/image/upload/v1788039436/scott-carlson-case-study-image.png',
     gradient: 'linear-gradient(135deg, #1c1917 0%, #3f3f46 100%)',
     liveSiteUrl: '#',
     redesignUrl: '#'

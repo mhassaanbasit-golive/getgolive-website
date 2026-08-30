@@ -77,7 +77,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
           </motion.div>
         </div>
 
-        {/* 9 Projects Grid: 3-column (desktop), 2-column (tablet), 1-column (mobile) */}
+        {/* Projects Grid: 3-column (desktop), 2-column (tablet), 1-column (mobile) */}
         <motion.div
           variants={gridContainerVariants}
           initial="hidden"
@@ -85,14 +85,21 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
           viewport={{ once: true, amount: 0.15 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7 md:gap-8"
         >
-          {PROJECTS.map((project, idx) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              onSelect={onSelectProject}
-              index={idx}
-            />
-          ))}
+          {[
+            PROJECTS.find(p => p.id === 'byrne-company'),
+            PROJECTS.find(p => p.id === 'rer-solutions'),
+            PROJECTS.find(p => p.id === 'scott-carlson'),
+            PROJECTS.find(p => p.id === 'hunter-real-estate-group'),
+          ]
+            .filter((p): p is Project => !!p)
+            .map((project, idx) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                onSelect={onSelectProject}
+                index={idx}
+              />
+            ))}
         </motion.div>
 
         {/* Bottom CTA Banner for Portfolio Page */}

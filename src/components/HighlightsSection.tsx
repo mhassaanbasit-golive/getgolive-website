@@ -12,8 +12,15 @@ export const HighlightsSection: React.FC<HighlightsSectionProps> = ({
   onSelectProject,
   onNavigate,
 }) => {
-  // Homepage features exactly 2 of the 9 projects
-  const featuredProjects = PROJECTS.slice(0, 2);
+  // Set the homepage grid to display these 3 projects in this exact order:
+  // 1. "Byrne Company"
+  // 2. "Scott Carlson"
+  // 3. "Rer Solutions"
+  const featuredProjects = [
+    PROJECTS.find(p => p.id === 'byrne-company'),
+    PROJECTS.find(p => p.id === 'scott-carlson'),
+    PROJECTS.find(p => p.id === 'rer-solutions'),
+  ].filter((p): p is Project => !!p);
 
   const headerVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -44,7 +51,7 @@ export const HighlightsSection: React.FC<HighlightsSectionProps> = ({
   };
 
   return (
-    <section id="projects" className="relative w-full bg-[var(--bg-primary)] text-[var(--text-primary)] py-14 sm:py-24 md:py-36 border-t border-[var(--border-color)] transition-colors duration-300">
+    <section id="projects" className="relative w-full bg-[var(--bg-primary)] text-[var(--text-primary)] py-14 sm:py-24 md:py-36 border-t border-[var(--border-color)] transition-colors duration-300 md:px-6">
       <div className="w-full max-w-[1800px] mx-auto px-5 sm:px-8 md:px-12 global-mobile-container">
         {/* Header Row with Staggered Typography Reveal */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-8 sm:mb-12 md:mb-16">
@@ -90,13 +97,13 @@ export const HighlightsSection: React.FC<HighlightsSectionProps> = ({
           </motion.div>
         </div>
 
-        {/* Featured 2 Projects Grid (Sequential wave entrance with staggerChildren) */}
+        {/* Featured 3 Projects Grid (Sequential wave entrance with staggerChildren) */}
         <motion.div
           variants={gridContainerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8"
         >
           {featuredProjects.map((project) => (
             <motion.div
@@ -106,54 +113,46 @@ export const HighlightsSection: React.FC<HighlightsSectionProps> = ({
               whileTap={{ scale: 0.97, transition: { type: 'spring', stiffness: 400 } }}
               style={{
                 willChange: 'transform, opacity',
+                borderRadius: '24px',
               }}
               onClick={() => {
                 if (project.id === 'hunter-real-estate-group') {
                   onNavigate('hunter-project');
+                } else if (project.id === 'byrne-company') {
+                  onNavigate('byrne-company');
+                } else if (project.id === 'rer-solutions') {
+                  onNavigate('rer-solutions');
+                } else if (project.id === 'scott-carlson') {
+                  onNavigate('scott-carlson');
                 } else {
                   onSelectProject(project);
                 }
               }}
-              className="group project-card card-container relative flex flex-col justify-between bg-[var(--surface-card)] rounded-[18px] sm:rounded-[20px] p-5 sm:p-7 border border-[var(--border-color)] hover:border-[var(--text-muted)]/40 shadow-sm cursor-pointer overflow-hidden text-left"
+              className="group project-card card-container relative w-full aspect-[16/9] md:aspect-[16/10] rounded-[24px] overflow-hidden cursor-pointer shadow-sm text-left border-0 bg-transparent"
             >
-              {/* Photo Container with Smooth 1.0 -> 1.05 Zoom */}
-              <div className="w-full aspect-[16/10] bg-[var(--bg-primary)] rounded-[12px] sm:rounded-[14px] overflow-hidden mb-4 sm:mb-6 relative border border-[var(--border-color)]">
-                <motion.img
-                  src={project.heroImage}
-                  alt={project.name}
-                  whileHover={{ scale: 1.05, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-                  whileTap={{ scale: 0.98, transition: { type: 'spring', stiffness: 400 } }}
-                  className="w-full h-full object-cover filter contrast-[1.06] card-image project-image scale-100 will-change-transform"
-                  loading="lazy"
-                />
-                
-                {/* Subtle Linear Dark Gradient Scrim on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent opacity-50 group-hover:opacity-90 transition-opacity duration-300 pointer-events-none" />
+              {/* Photo as entire card (full-bleed) */}
+              <motion.img
+                src={project.heroImage}
+                alt={project.name}
+                whileHover={{ scale: 1.05, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
+                whileTap={{ scale: 0.98, transition: { type: 'spring', stiffness: 400 } }}
+                className="w-full h-full object-cover filter contrast-[1.06] card-image project-image scale-100 will-change-transform"
+                loading="lazy"
+              />
+              
+              {/* Subtle linear dark gradient overlay at bottom of the image */}
+              <div 
+                className="absolute inset-0 pointer-events-none z-10" 
+                style={{
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%)',
+                }}
+              />
 
-
-
-                {/* Hover Label (Fade + Slide): View Project Pill */}
-                <div className="card-hover-element hover-pill absolute bottom-2.5 left-2.5 sm:bottom-3.5 sm:left-3.5 pointer-events-none">
-                  <span className="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/95 dark:bg-black/90 text-black dark:text-white backdrop-blur-md card-label-font font-sans font-medium text-[11px] tracking-[0.08em] uppercase shadow-lg border border-white/20">
-                    View Project ↗
-                  </span>
-                </div>
-              </div>
-
-              {/* Card Footer Row */}
-              <div className="flex items-end justify-between gap-3 sm:gap-4 pt-1">
-                <div className="min-w-0 flex-1">
-                  <h3 className="font-headline font-bold text-[var(--text-primary)] text-[18px] sm:text-[22px] md:text-[26px] leading-tight tracking-[-0.02em] group-hover:opacity-90 transition-opacity truncate">
-                    {project.name}
-                  </h3>
-                </div>
-
-                {/* Bottom-Right Arrow Icon translates translateX(6px) on hover */}
-                <div className="card-arrow-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[var(--border-color)] bg-[var(--bg-primary)] flex items-center justify-center text-[var(--text-primary)] shrink-0 group-hover:bg-[var(--cta-bg)] group-hover:text-[var(--cta-text)] group-hover:border-[var(--cta-bg)] shadow-sm">
-                  <span className="text-xs sm:text-base font-mono card-arrow arrow-icon block">
-                    →
-                  </span>
-                </div>
+              {/* Project Title placed directly on top of gradient overlay at bottom-left */}
+              <div className="absolute bottom-5 left-5 right-5 sm:bottom-7 sm:left-7 sm:right-7 pointer-events-none z-20">
+                <h3 className="font-headline font-bold text-white text-[20px] md:text-[28px] leading-tight tracking-[-0.02em] drop-shadow-md truncate">
+                  {project.name}
+                </h3>
               </div>
             </motion.div>
           ))}
@@ -167,7 +166,7 @@ export const HighlightsSection: React.FC<HighlightsSectionProps> = ({
             onClick={() => onNavigate('projects')}
             className="w-full py-3 rounded-full bg-[var(--surface-card)] border border-[var(--border-color)] text-[var(--text-primary)] font-semibold text-[13px] hover:bg-[var(--bg-primary)] transition-colors flex items-center justify-center gap-2 shadow-sm"
           >
-            <span>View All 9 Projects</span>
+            <span>View All Projects</span>
             <motion.span
               whileHover={{ x: 6, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
             >

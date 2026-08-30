@@ -2,25 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 
 export const HeroSection: React.FC = () => {
-  const [londonTime, setLondonTime] = useState<string>('');
   const [typedText, setTypedText] = useState<string>('');
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const options: Intl.DateTimeFormatOptions = {
-        timeZone: 'Europe/London',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true,
-      };
-      setLondonTime(now.toLocaleTimeString('en-US', options));
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 10000);
-    return () => clearInterval(interval);
-  }, []);
 
   /* TEXT CYCLE ANIMATION */
   useEffect(() => {
@@ -95,22 +77,9 @@ export const HeroSection: React.FC = () => {
       {/* Middle Spacer for Spatial Balance */}
       <div className="flex-1 min-h-[60px] sm:min-h-[120px] md:min-h-[220px]" />
 
-      {/* Bottom Row Labels (Left and Right) */}
+      {/* Bottom Row Labels */}
       <div className="relative z-20 w-full px-5 sm:px-8 md:px-12 mb-6 sm:mb-8 global-mobile-container">
-        <div className="max-w-[1800px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-3 sm:gap-6 text-[var(--text-muted)] text-[12px] sm:text-[14px] leading-[1.6]">
-          {/* Bottom Left Labels */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 150, damping: 35, delay: 0.15 }}
-            style={{ willChange: 'transform, opacity' }}
-            className="font-mono text-[11px] sm:text-xs md:text-sm tracking-wide text-[var(--text-muted)]"
-          >
-            <span className="text-[var(--text-primary)] font-medium">09:45 AM EST</span>
-            <span className="mx-2 text-[var(--border-color)]">/</span>
-            <span>Serving all over USA.</span>
-          </motion.div>
-
+        <div className="max-w-[1800px] mx-auto flex justify-end items-end text-[var(--text-muted)] text-[12px] sm:text-[14px] leading-[1.6]">
           {/* Bottom Right Scroll Cue */}
           <motion.a
             href="#mockup"

@@ -1,4 +1,4 @@
-export type PageType = 'home' | 'process' | 'projects' | 'hunter-project';
+export type PageType = 'home' | 'process' | 'projects' | 'hunter-project' | 'byrne-company' | 'rer-solutions' | 'scott-carlson';
 
 export type ModalType = 'menu' | 'concept' | 'contact' | 'case-study' | 'service' | 'project-detail' | null;
 

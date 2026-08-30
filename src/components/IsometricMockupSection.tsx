@@ -60,10 +60,10 @@ export const IsometricMockupSection: React.FC<IsometricMockupSectionProps> = ({ 
             <div className="relative aspect-[4/3] md:aspect-[16/10] bg-[var(--bg-primary)] overflow-hidden rounded-[18px] sm:rounded-[24px]">
               <motion.img
                 style={{ scale: imageScale, y: imageY, willChange: 'transform' }}
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
+                src="https://res.cloudinary.com/cyfb9slf/image/upload/v1788043208/see-before-you-commit-image.png"
                 alt="Editorial Architectural Canvas"
                 whileHover={{ scale: 1.04, transition: { type: 'spring', stiffness: 220, damping: 25 } }}
-                className="w-full h-full object-cover filter grayscale contrast-125 opacity-85 card-image will-change-transform"
+                className="w-full h-full object-cover opacity-95 card-image will-change-transform"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--surface-card)] via-transparent to-transparent opacity-80 pointer-events-none" />
               <div className="absolute inset-0 bg-black/15 group-hover:bg-transparent transition-colors duration-700 pointer-events-none" />
