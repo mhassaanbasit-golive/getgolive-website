@@ -85,6 +85,17 @@ export function initAnimationSystem(): () => void {
     const cardListeners: Array<{ el: HTMLElement; move: (e: MouseEvent) => void; leave: () => void }> = [];
 
     cards.forEach((card) => {
+      // Skip dynamic expanding cards to completely prevent layout-thrashing getBoundingClientRect calls during height transitions
+      if (
+        card.classList.contains('service-card') ||
+        card.classList.contains('process-step-card') ||
+        card.closest('#faq') ||
+        card.closest('#services-section') ||
+        card.closest('#process-section')
+      ) {
+        return;
+      }
+
       const handleMouseMove = (e: MouseEvent) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;

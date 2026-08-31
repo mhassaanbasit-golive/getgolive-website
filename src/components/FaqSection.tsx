@@ -6,7 +6,16 @@ export const FaqSection: React.FC = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   const toggleFaq = (idx: number) => {
-    setOpenIdx(openIdx === idx ? null : idx);
+    if (openIdx !== null && openIdx !== idx) {
+      // Collapse currently active FAQ first
+      setOpenIdx(null);
+      // Brief, seamless 250ms cascade before expanding the next FAQ
+      setTimeout(() => {
+        setOpenIdx(idx);
+      }, 250);
+    } else {
+      setOpenIdx(openIdx === idx ? null : idx);
+    }
   };
 
   // Split FAQs into 2 columns for desktop
@@ -61,6 +70,7 @@ export const FaqSection: React.FC = () => {
 
         {/* 2-Column Accordion */}
         <motion.div
+          layout="position"
           variants={gridContainerVariants}
           initial="hidden"
           whileInView="visible"
@@ -74,13 +84,13 @@ export const FaqSection: React.FC = () => {
               const isOpen = openIdx === globalIdx;
               return (
                 <motion.div
+                  layout="position"
                   key={globalIdx}
                   variants={cardVariants}
-                  layout
                   className="card glass-card rounded-[14px] sm:rounded-[20px] overflow-hidden"
                 >
                   <motion.button
-                    whileTap={{ scale: 0.98, transition: { type: 'spring', stiffness: 400 } }}
+                    whileTap={{ scale: 0.99, transition: { type: 'spring', stiffness: 400 } }}
                     onClick={() => toggleFaq(globalIdx)}
                     className="w-full p-4 sm:p-6 text-left flex justify-between items-center gap-3 sm:gap-4 cursor-pointer group"
                   >
@@ -89,7 +99,7 @@ export const FaqSection: React.FC = () => {
                     </span>
                     <motion.span
                       animate={{ rotate: isOpen ? 45 : 0 }}
-                      transition={{ type: 'spring', stiffness: 200, damping: 40 }}
+                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                       className="text-[var(--text-primary)] text-lg sm:text-xl font-mono shrink-0 ml-2 block"
                     >
                       +
@@ -102,7 +112,7 @@ export const FaqSection: React.FC = () => {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ type: 'spring', stiffness: 200, damping: 40 }}
+                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
                         <div className="px-4 sm:px-6 pb-4 sm:pb-6 text-[var(--text-muted)] text-[12.5px] sm:text-[14px] leading-relaxed border-t border-[var(--border-color)] pt-3 sm:pt-4">
@@ -123,13 +133,13 @@ export const FaqSection: React.FC = () => {
               const isOpen = openIdx === globalIdx;
               return (
                 <motion.div
+                  layout="position"
                   key={globalIdx}
                   variants={cardVariants}
-                  layout
                   className="card glass-card rounded-[14px] sm:rounded-[20px] overflow-hidden"
                 >
                   <motion.button
-                    whileTap={{ scale: 0.98, transition: { type: 'spring', stiffness: 400 } }}
+                    whileTap={{ scale: 0.99, transition: { type: 'spring', stiffness: 400 } }}
                     onClick={() => toggleFaq(globalIdx)}
                     className="w-full p-4 sm:p-6 text-left flex justify-between items-center gap-3 sm:gap-4 cursor-pointer group"
                   >
@@ -138,7 +148,7 @@ export const FaqSection: React.FC = () => {
                     </span>
                     <motion.span
                       animate={{ rotate: isOpen ? 45 : 0 }}
-                      transition={{ type: 'spring', stiffness: 200, damping: 40 }}
+                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                       className="text-[var(--text-primary)] text-lg sm:text-xl font-mono shrink-0 ml-2 block"
                     >
                       +
@@ -151,7 +161,7 @@ export const FaqSection: React.FC = () => {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ type: 'spring', stiffness: 200, damping: 40 }}
+                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
                         <div className="px-4 sm:px-6 pb-4 sm:pb-6 text-[var(--text-muted)] text-[12.5px] sm:text-[14px] leading-relaxed border-t border-[var(--border-color)] pt-3 sm:pt-4">

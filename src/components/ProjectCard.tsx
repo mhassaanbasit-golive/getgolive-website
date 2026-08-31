@@ -31,8 +31,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect, ind
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
-      whileHover={{ y: -6, scale: 1.01, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-      whileTap={{ scale: 0.97, transition: { type: 'spring', stiffness: 400 } }}
+      whileTap={{ scale: 0.99, transition: { type: 'spring', stiffness: 400 } }}
       onClick={() => onSelect(project)}
       style={{
         willChange: 'transform, opacity',
@@ -43,8 +42,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect, ind
       <motion.img
         src={project.heroImage}
         alt={project.name}
-        whileHover={{ scale: 1.05, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-        whileTap={{ scale: 0.98, transition: { type: 'spring', stiffness: 400 } }}
+        whileTap={{ scale: 0.99, transition: { type: 'spring', stiffness: 400 } }}
         className="w-full h-full object-cover filter contrast-[1.06] card-image project-image scale-100 will-change-transform"
         loading="lazy"
       />

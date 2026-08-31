@@ -86,12 +86,11 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 150, damping: 35, delay: 0.25 }}
-            whileHover={{ y: 3, transition: { type: "spring", stiffness: 300, damping: 30 } }}
             style={{ willChange: 'transform, opacity' }}
             className="flex items-center gap-1.5 text-[11px] sm:text-[12px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors cursor-pointer group"
           >
             <span>Scroll to explore</span>
-            <span className="text-[11px] sm:text-[12px] group-hover:translate-y-1 transition-transform duration-300">↓</span>
+            <span className="text-[11px] sm:text-[12px]">↓</span>
           </motion.a>
         </div>
       </div>

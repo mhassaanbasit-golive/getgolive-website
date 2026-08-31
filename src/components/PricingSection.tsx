@@ -73,12 +73,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan, on
             <motion.div
               key={plan.id}
               variants={cardVariants}
-              whileHover={{ y: -6, scale: 1.01, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-              whileTap={{ scale: 0.97, transition: { type: 'spring', stiffness: 400 } }}
+              whileTap={{ scale: 0.99, transition: { type: 'spring', stiffness: 400 } }}
               style={{ willChange: 'transform, opacity' }}
               className={`pricing-card reveal-card card-container bg-[var(--surface-card)] rounded-[18px] sm:rounded-[24px] p-5 sm:p-8 md:p-10 border ${
                 plan.popular ? 'border-[var(--text-primary)] is-popular' : 'border-[var(--border-color)]'
-              } relative flex flex-col justify-between hover:border-[var(--text-muted)]/40 shadow-md text-left group`}
+              } relative flex flex-col justify-between shadow-md text-left group`}
             >
               <div>
                 {/* Header Row with Title and optional Popular tag */}
@@ -108,8 +107,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan, on
 
               {/* Primary CTA (Request quote) */}
               <motion.button
-                whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-                whileTap={{ scale: 0.95, transition: { type: 'spring', stiffness: 400 } }}
+                whileTap={{ scale: 0.98, transition: { type: 'spring', stiffness: 400 } }}
                 onClick={() => {
                   onSelectPlan(plan.name);
                   onOpenModal('contact');
@@ -121,9 +119,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan, on
                 }`}
               >
                 <span>Request a quote</span>
-                <motion.span
-                  whileHover={{ x: 6, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-                >
+                <motion.span>
                   →
                 </motion.span>
               </motion.button>

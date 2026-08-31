@@ -6,7 +6,16 @@ export const ProcessSection: React.FC = () => {
   const [openStepNumber, setOpenStepNumber] = useState<string | null>(null);
 
   const toggleStep = (stepNumber: string) => {
-    setOpenStepNumber((prev) => (prev === stepNumber ? null : stepNumber));
+    if (openStepNumber !== null && openStepNumber !== stepNumber) {
+      // Collapse currently active step first
+      setOpenStepNumber(null);
+      // Brief, seamless 250ms cascade before expanding the next step
+      setTimeout(() => {
+        setOpenStepNumber(stepNumber);
+      }, 250);
+    } else {
+      setOpenStepNumber((prev) => (prev === stepNumber ? null : stepNumber));
+    }
   };
 
   const headerVariants = {
@@ -56,7 +65,7 @@ export const ProcessSection: React.FC = () => {
 
         {/* 3 Step Process Accordion Cards (Sequential wave entrance) */}
         <motion.div
-          layout
+          layout="position"
           variants={gridContainerVariants}
           initial="hidden"
           whileInView="visible"
@@ -68,14 +77,12 @@ export const ProcessSection: React.FC = () => {
 
             return (
               <motion.div
+                layout="position"
                 key={step.stepNumber}
-                layout
                 variants={cardVariants}
-                whileHover={{ y: -4, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-                whileTap={{ scale: 0.98, transition: { type: 'spring', stiffness: 400 } }}
-                style={{ willChange: 'transform, opacity' }}
+                whileTap={{ scale: 0.99, transition: { type: 'spring', stiffness: 400 } }}
                 onClick={() => toggleStep(step.stepNumber)}
-                className="reveal-card card spotlight-card hover-lift bg-[var(--surface-card)] rounded-[18px] sm:rounded-[24px] p-5 sm:p-8 md:p-10 border border-[var(--border-color)] hover:border-[var(--text-muted)]/40 flex flex-col justify-between shadow-md text-left group cursor-pointer select-none"
+                className="reveal-card card spotlight-card hover-lift bg-[var(--surface-card)] rounded-[18px] sm:rounded-[24px] p-5 sm:p-8 md:p-10 border border-[var(--border-color)] flex flex-col justify-between shadow-md text-left group cursor-pointer select-none"
               >
                 {/* Card Title Row with Rotating Dropdown Chevron */}
                 <div className="flex items-center justify-between gap-3 sm:gap-4">
@@ -85,7 +92,7 @@ export const ProcessSection: React.FC = () => {
 
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ type: 'spring', stiffness: 220, damping: 25 }}
+                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                     className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[var(--border-color)] flex items-center justify-center text-[var(--text-primary)] shrink-0 group-hover:border-[var(--text-primary)]/40 bg-[var(--surface-card)] shadow-xs transition-colors"
                   >
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -102,7 +109,7 @@ export const ProcessSection: React.FC = () => {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ type: 'spring', stiffness: 200, damping: 40 }}
+                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden"
                     >
                       <p className="font-sans font-normal text-[var(--text-muted)] text-[13px] sm:text-[15px] leading-[1.55] pt-3 sm:pt-4">

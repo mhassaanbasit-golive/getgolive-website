@@ -48,7 +48,7 @@ html.dark {
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   html, body {
@@ -127,21 +127,16 @@ textarea {
    2. SCROLL ENTRANCES (Cards & Text)
    ========================================================================== */
 
-/* Default State: translate 40px down, slight scale down, and 5deg 3D tilt */
+/* Default State: Clean, minimal fade-in with no uplifting, tilting or scaling */
 .reveal-on-scroll,
 .reveal-card,
 .section-title,
 .process-step-card,
 .faq-item {
   opacity: 0;
-  transform: translateY(40px) scale(0.96) rotateX(5deg);
-  transform-origin: center bottom;
-  perspective: 1000px;
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
               border-color var(--premium-ease);
-  will-change: transform, opacity;
+  will-change: opacity;
 }
 
 /* Visible State when intersected */
@@ -151,7 +146,6 @@ textarea {
 .process-step-card.visible,
 .faq-item.visible {
   opacity: 1 !important;
-  transform: translateY(0) scale(1) rotateX(0) !important;
 }
 
 /* Sequential Stagger Delays for Grid Children */
@@ -198,11 +192,52 @@ textarea {
               backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               -webkit-backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, box-shadow;
+  will-change: auto;
 }
 
 .pricing-card.is-popular {
   border-color: var(--text-primary) !important;
+}
+
+/* ==========================================================================
+   OPTIMIZATION FOR DYNAMIC-HEIGHT COMPONENT REPAINTS
+   Disables heavy backdrop-filter recalculations on dynamic height updates
+   ========================================================================== */
+.service-card,
+.process-step-card,
+#faq .card,
+#faq .glass-card {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  will-change: auto !important;
+  border: 1px solid var(--border-color) !important;
+  transition: none !important;
+}
+
+html.dark .service-card,
+html.dark .process-step-card,
+html.dark #faq .card,
+html.dark #faq .glass-card {
+  background-color: #141414 !important;
+  background: #141414 !important;
+  will-change: auto !important;
+  border: 1px solid var(--border-color) !important;
+  transition: none !important;
+}
+
+/* Disable spotlight gradients completely on dynamic-height cards to prevent layout-thrashing repaints */
+.service-card::before,
+.service-card::after,
+.process-step-card::before,
+.process-step-card::after,
+#faq .card::before,
+#faq .card::after,
+#faq .glass-card::before,
+#faq .glass-card::after {
+  display: none !important;
+  content: none !important;
 }
 
 /* Spotlight Glow Overlay Following Cursor */
@@ -272,8 +307,8 @@ html.dark .rounded-card::before {
 .process-step-card:hover,
 .hover-lift:hover,
 .rounded-card:hover {
-  transform: scale(1.02) translateY(-4px) !important;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12), 0 0 24px rgba(255, 255, 255, 0.03);
+  transform: none !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
 }
 
 html.dark .card:hover,
@@ -286,7 +321,7 @@ html.dark .form-card:hover,
 html.dark .process-step-card:hover,
 html.dark .hover-lift:hover,
 html.dark .rounded-card:hover {
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.45), 0 0 24px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
 }
 
 /* ==========================================================================
@@ -378,7 +413,7 @@ img.card-img,
 .group:hover .card-image,
 .group:hover .project-image,
 .rounded-card:hover .card-image {
-  transform: scale(1.03);
+  transform: none;
 }
 
 /* ==========================================================================
@@ -538,17 +573,6 @@ html:not(.dark) nav.nav-scrolled {
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  ::before,
-  ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-    transform: none !important;
-    will-change: auto !important;
-  }
-
   .reveal,
   .fade-up,
   .reveal-on-scroll,
@@ -559,6 +583,7 @@ html:not(.dark) nav.nav-scrolled {
   .trust-card {
     opacity: 1 !important;
     transform: none !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -763,6 +788,28 @@ html.dark .ai-shimmer-light {
 .animate-marquee-infinite:hover {
   animation-play-state: paused;
 }
+
+/* ==========================================================================
+   8. CUSTOM PURE CSS MARQUEE REDESIGN
+   ========================================================================== */
+@keyframes marquee-infinite-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: marquee-infinite-left 35s linear infinite !important;
+  will-change: transform;
+}
+
+.marquee-parent-container:hover .animate-infinite-scroll {
+  animation-play-state: paused !important;
+}
+
 
 
 

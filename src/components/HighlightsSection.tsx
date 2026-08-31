@@ -82,15 +82,12 @@ export const HighlightsSection: React.FC<HighlightsSectionProps> = ({
             
             {/* View All Projects CTA */}
             <motion.button
-              whileHover={{ x: 4, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-              whileTap={{ scale: 0.95, transition: { type: 'spring', stiffness: 400 } }}
+              whileTap={{ scale: 0.98, transition: { type: 'spring', stiffness: 400 } }}
               onClick={() => onNavigate('projects')}
               className="inline-flex items-center gap-1.5 text-[12.5px] sm:text-[14px] md:text-[15px] font-semibold text-[var(--text-primary)] hover:text-[var(--cta-bg)] group transition-colors cursor-pointer py-1"
             >
               <span>View All Projects</span>
-              <motion.span
-                whileHover={{ x: 6, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-              >
+              <motion.span>
                 →
               </motion.span>
             </motion.button>
@@ -109,8 +106,7 @@ export const HighlightsSection: React.FC<HighlightsSectionProps> = ({
             <motion.div
               key={project.id}
               variants={cardVariants}
-              whileHover={{ y: -6, scale: 1.01, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-              whileTap={{ scale: 0.97, transition: { type: 'spring', stiffness: 400 } }}
+              whileTap={{ scale: 0.99, transition: { type: 'spring', stiffness: 400 } }}
               style={{
                 willChange: 'transform, opacity',
                 borderRadius: '24px',
@@ -134,8 +130,7 @@ export const HighlightsSection: React.FC<HighlightsSectionProps> = ({
               <motion.img
                 src={project.heroImage}
                 alt={project.name}
-                whileHover={{ scale: 1.05, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-                whileTap={{ scale: 0.98, transition: { type: 'spring', stiffness: 400 } }}
+                whileTap={{ scale: 0.99, transition: { type: 'spring', stiffness: 400 } }}
                 className="w-full h-full object-cover filter contrast-[1.06] card-image project-image scale-100 will-change-transform"
                 loading="lazy"
               />
@@ -161,15 +156,12 @@ export const HighlightsSection: React.FC<HighlightsSectionProps> = ({
         {/* Mobile / Tablet Bottom Link */}
         <div className="mt-8 text-center md:hidden">
           <motion.button
-            whileHover={{ scale: 1.02, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-            whileTap={{ scale: 0.95, transition: { type: 'spring', stiffness: 400 } }}
+            whileTap={{ scale: 0.98, transition: { type: 'spring', stiffness: 400 } }}
             onClick={() => onNavigate('projects')}
             className="w-full py-3 rounded-full bg-[var(--surface-card)] border border-[var(--border-color)] text-[var(--text-primary)] font-semibold text-[13px] hover:bg-[var(--bg-primary)] transition-colors flex items-center justify-center gap-2 shadow-sm"
           >
             <span>View All Projects</span>
-            <motion.span
-              whileHover={{ x: 6, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-            >
+            <motion.span>
               →
             </motion.span>
           </motion.button>

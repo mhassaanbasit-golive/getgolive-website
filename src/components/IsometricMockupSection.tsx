@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import React from 'react';
+import { motion } from 'motion/react';
 import { ModalType } from '../types';
 
 interface IsometricMockupSectionProps {
@@ -7,62 +7,51 @@ interface IsometricMockupSectionProps {
 }
 
 export const IsometricMockupSection: React.FC<IsometricMockupSectionProps> = ({ onOpenModal }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Scroll-linked scale and vertical pan for 3D luxury depth
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.15, 1.0, 0.95]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [-30, 30]);
-  const containerRotateX = useTransform(scrollYProgress, [0, 0.5, 1], [6, 0, -6]);
+  // Stable, elegant layout parameters
+  const imageScale = 1.0;
+  const imageY = 0;
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 50, filter: 'blur(10px)' },
+    hidden: { opacity: 0, y: 0, filter: 'blur(0px)' },
     visible: {
       opacity: 1,
       y: 0,
       filter: 'blur(0px)',
-      transition: { type: 'spring', stiffness: 90, damping: 28, mass: 1.1 },
+      transition: { duration: 0.5, ease: 'easeOut' },
     },
   };
 
   const textVariants = {
-    hidden: { opacity: 0, y: 45, filter: 'blur(10px)' },
+    hidden: { opacity: 0, y: 0, filter: 'blur(0px)' },
     visible: {
       opacity: 1,
       y: 0,
       filter: 'blur(0px)',
-      transition: { type: 'spring', stiffness: 90, damping: 28, mass: 1.1, delay: 0.15 },
+      transition: { duration: 0.5, ease: 'easeOut', delay: 0.1 },
     },
   };
 
   return (
-    <section ref={containerRef} id="mockup" className="relative w-full bg-[var(--bg-primary)] text-[var(--text-primary)] py-16 sm:py-28 md:py-44 px-5 sm:px-8 md:px-12 global-mobile-container overflow-hidden border-t border-[var(--border-color)] transition-colors duration-300">
+    <section id="mockup" className="relative w-full bg-[var(--bg-primary)] text-[var(--text-primary)] py-16 sm:py-28 md:py-44 px-5 sm:px-8 md:px-12 global-mobile-container overflow-hidden border-t border-[var(--border-color)] transition-colors duration-300">
       <div className="max-w-[1800px] mx-auto relative flex flex-col lg:flex-row items-center justify-between gap-10 sm:gap-16 lg:gap-20">
         
-        {/* Sleek, Dark Grey Editorial Canvas Container with 3D Perspective */}
+        {/* Sleek, Dark Grey Editorial Canvas Container */}
         <motion.div
           variants={cardVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          style={{ willChange: 'transform, opacity, filter', perspective: 1400, rotateX: containerRotateX }}
+          style={{ willChange: 'transform, opacity, filter', perspective: 1400 }}
           className="w-full lg:w-[58%]"
         >
           <motion.div
-            whileHover={{ y: -8, scale: 1.015, transition: { type: 'spring', stiffness: 220, damping: 25 } }}
-            whileTap={{ scale: 0.98, transition: { type: 'spring', stiffness: 350 } }}
+            whileTap={{ scale: 0.99, transition: { type: 'spring', stiffness: 350 } }}
             className="rounded-card card spotlight-card hover-lift w-full mx-auto rounded-[20px] sm:rounded-[28px] bg-[var(--surface-card)] border border-[var(--border-color)] overflow-hidden shadow-2xl group relative"
           >
             <div className="relative aspect-[4/3] md:aspect-[16/10] bg-[var(--bg-primary)] overflow-hidden rounded-[18px] sm:rounded-[24px]">
               <motion.img
-                style={{ scale: imageScale, y: imageY, willChange: 'transform' }}
                 src="https://res.cloudinary.com/cyfb9slf/image/upload/v1788043208/see-before-you-commit-image.png"
                 alt="Editorial Architectural Canvas"
-                whileHover={{ scale: 1.04, transition: { type: 'spring', stiffness: 220, damping: 25 } }}
                 className="w-full h-full object-cover opacity-95 card-image will-change-transform"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--surface-card)] via-transparent to-transparent opacity-80 pointer-events-none" />
@@ -87,15 +76,12 @@ export const IsometricMockupSection: React.FC<IsometricMockupSectionProps> = ({ 
             We build a working preview of your site before you spend anything. Click through it, share it with your team, and decide from there.
           </p>
           <motion.button
-            whileHover={{ scale: 1.04, transition: { type: 'spring', stiffness: 250, damping: 25 } }}
-            whileTap={{ scale: 0.96, transition: { type: 'spring', stiffness: 350 } }}
+            whileTap={{ scale: 0.98, transition: { type: 'spring', stiffness: 350 } }}
             onClick={() => onOpenModal('concept')}
             className="magnetic-btn bg-[var(--cta-bg)] text-[var(--cta-text)] font-semibold text-[14px] sm:text-[16px] px-6 py-3 sm:px-9 sm:py-4 rounded-full cursor-pointer shadow-xl flex items-center gap-3 group"
           >
             <span>Request a concept</span>
-            <motion.span
-              whileHover={{ x: 6, transition: { type: 'spring', stiffness: 250, damping: 25 } }}
-            >
+            <motion.span>
               →
             </motion.span>
           </motion.button>

@@ -12,7 +12,16 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const toggleExpand = (id: string) => {
-    setExpandedId((prev) => (prev === id ? null : id));
+    if (expandedId !== null && expandedId !== id) {
+      // Collapse currently active card first
+      setExpandedId(null);
+      // Brief, seamless 250ms cascade before expanding the next card
+      setTimeout(() => {
+        setExpandedId(id);
+      }, 250);
+    } else {
+      setExpandedId((prev) => (prev === id ? null : id));
+    }
   };
 
   const headerVariants = {
@@ -116,7 +125,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
 
         {/* 6 Capability Dropdown Cards Grid: 3 columns on desktop, 2 on tablet, 1 on mobile */}
         <motion.div
-          layout
+          layout="position"
           variants={gridContainerVariants}
           initial="hidden"
           whileInView="visible"
@@ -128,12 +137,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
 
             return (
               <motion.div
+                layout="position"
                 key={service.id}
-                layout
                 variants={cardVariants}
-                whileHover={{ y: -3, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-                whileTap={{ scale: 0.985, transition: { type: 'spring', stiffness: 400 } }}
-                style={{ willChange: 'transform, opacity' }}
+                whileTap={{ scale: 0.99, transition: { type: 'spring', stiffness: 400 } }}
                 onClick={() => toggleExpand(service.id)}
                 role="button"
                 tabIndex={0}
@@ -144,7 +151,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
                     toggleExpand(service.id);
                   }
                 }}
-                className="service-card card glass-card reveal-card card-container bg-[var(--surface-card)] rounded-[18px] sm:rounded-[24px] p-5 sm:p-7 md:p-8 shadow-md border border-[var(--border-color)] hover:border-[var(--text-muted)]/40 flex flex-col justify-between cursor-pointer group text-left relative overflow-hidden select-none"
+                className="service-card card glass-card reveal-card card-container bg-[var(--surface-card)] rounded-[18px] sm:rounded-[24px] p-5 sm:p-7 md:p-8 shadow-md border border-[var(--border-color)] flex flex-col justify-between cursor-pointer group text-left relative overflow-hidden select-none"
               >
                 {/* Heading Row with Rotating Dropdown Chevron */}
                 <div className="flex items-center justify-between gap-3 sm:gap-4">
@@ -155,7 +162,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
                   {/* Dropdown Chevron Indicator */}
                   <motion.div
                     animate={{ rotate: isExpanded ? 180 : 0 }}
-                    transition={{ type: 'spring', stiffness: 260, damping: 25 }}
+                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                     className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[var(--border-color)] flex items-center justify-center text-[var(--text-primary)] shrink-0 group-hover:border-[var(--text-primary)]/40 bg-[var(--surface-card)] shadow-xs transition-colors"
                     aria-hidden="true"
                   >
@@ -182,7 +189,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ type: 'spring', stiffness: 220, damping: 30 }}
+                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden"
                     >
                       <div className="pt-3 sm:pt-4 border-t border-[var(--border-color)]/60 mt-3 sm:mt-4">

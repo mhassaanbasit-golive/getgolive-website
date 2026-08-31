@@ -144,8 +144,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02, transition: { type: 'spring', stiffness: 300, damping: 30 } }}
-                  whileTap={{ scale: 0.95, transition: { type: 'spring', stiffness: 400 } }}
+                  whileTap={{ scale: 0.98, transition: { type: 'spring', stiffness: 400 } }}
                   className="magnetic-btn w-full bg-[var(--cta-bg)] text-[var(--cta-text)] font-semibold text-[13px] sm:text-[14px] md:text-[15px] py-2.5 sm:py-3.5 md:py-4 rounded-full cursor-pointer shadow-xl mt-2 sm:mt-4"
                 >
                   Submit Inquiry →

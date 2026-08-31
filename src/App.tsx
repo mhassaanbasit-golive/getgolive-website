@@ -91,30 +91,29 @@ export default function App() {
       setPreviousPage(currentPage);
     }
 
-    // Immediately snap to 0 to prevent ugly content flicker during transitioning state
-    window.scrollTo({ top: 0, behavior: 'instant' });
-
+    // After 300ms (when the overlay is fully visible), swap pages and reset scroll to 0
     setTimeout(() => {
       setCurrentPage(page);
-      setIsRouteChanging(false);
+      window.scrollTo({ top: 0, behavior: 'instant' });
 
-      // Restore scroll position after a tiny timeout to allow DOM/Lenis to settle
+      // Hold briefly to let the new layout mount, then fade out the loader and restore scroll
       setTimeout(() => {
+        setIsRouteChanging(false);
+
         const savedScroll = scrollPositions.current[page];
         if (savedScroll !== undefined && savedScroll > 50) {
           window.scrollTo({ top: savedScroll, behavior: 'smooth' });
         } else if (page === 'home' && ['hunter-project', 'byrne-company', 'rer-solutions', 'scott-carlson'].includes(currentPage)) {
-          // If returning back home from a detail page and no saved scroll is high enough,
-          // scroll directly to the #projects section so the user lands on target!
-          const projectsSection = document.getElementById('projects');
-          if (projectsSection) {
-            projectsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-        } else {
-          window.scrollTo({ top: 0, behavior: 'instant' });
+          // Smooth scroll to projects section if going home from a details page
+          setTimeout(() => {
+            const projectsSection = document.getElementById('projects');
+            if (projectsSection) {
+              projectsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }, 100);
         }
-      }, 120);
-    }, 800);
+      }, 100);
+    }, 300);
   };
 
   const handleOpenModal = (modal: ModalType) => {
@@ -164,32 +163,34 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] font-body selection:bg-white selection:text-black antialiased relative transition-colors duration-300">
       
-      {/* B. The 3-Dot Loading Animation (Between Pages) */}
+      {/* B. Elegant Theme-Aware Loading Animation (Between Pages) */}
       <AnimatePresence>
         {isRouteChanging && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-50 bg-[#000000] flex items-center justify-center select-none"
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="fixed inset-0 z-50 bg-[var(--bg-primary)]/80 dark:bg-[#0A0A0A]/85 backdrop-blur-md flex items-center justify-center select-none"
           >
-            <div className="flex items-center gap-3">
-              <motion.div
-                animate={{ opacity: [0.2, 1, 0.2] }}
-                transition={{ duration: 0.3, repeat: Infinity, ease: 'easeInOut' }}
-                className="w-[8px] h-[8px] bg-white rounded-full"
-              />
-              <motion.div
-                animate={{ opacity: [0.2, 1, 0.2] }}
-                transition={{ duration: 0.3, delay: 0.15, repeat: Infinity, ease: 'easeInOut' }}
-                className="w-[8px] h-[8px] bg-white rounded-full"
-              />
-              <motion.div
-                animate={{ opacity: [0.2, 1, 0.2] }}
-                transition={{ duration: 0.3, delay: 0.3, repeat: Infinity, ease: 'easeInOut' }}
-                className="w-[8px] h-[8px] bg-white rounded-full"
-              />
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex items-center gap-2.5">
+                <motion.div
+                  animate={{ scale: [0.8, 1.25, 0.8], opacity: [0.35, 1, 0.35] }}
+                  transition={{ duration: 1.0, repeat: Infinity, ease: 'easeInOut' }}
+                  className="w-[10px] h-[10px] bg-[var(--text-primary)] rounded-full"
+                />
+                <motion.div
+                  animate={{ scale: [0.8, 1.25, 0.8], opacity: [0.35, 1, 0.35] }}
+                  transition={{ duration: 1.0, delay: 0.2, repeat: Infinity, ease: 'easeInOut' }}
+                  className="w-[10px] h-[10px] bg-[var(--text-primary)] rounded-full"
+                />
+                <motion.div
+                  animate={{ scale: [0.8, 1.25, 0.8], opacity: [0.35, 1, 0.35] }}
+                  transition={{ duration: 1.0, delay: 0.4, repeat: Infinity, ease: 'easeInOut' }}
+                  className="w-[10px] h-[10px] bg-[var(--text-primary)] rounded-full"
+                />
+              </div>
             </div>
           </motion.div>
         )}
