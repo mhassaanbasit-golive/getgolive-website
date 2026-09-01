@@ -136,7 +136,7 @@ export const ScottCarlsonPage: React.FC<ScottCarlsonPageProps> = ({ onNavigate, 
             whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 250, damping: 25 } }}
             whileTap={{ scale: 0.97 }}
             onClick={() => onOpenModal('concept')}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white text-black font-semibold text-[16px] px-10 py-5 rounded-full shadow-xl cursor-pointer group hover:bg-neutral-100 transition-colors"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[var(--cta-bg)] text-[var(--cta-text)] font-semibold text-[16px] px-10 py-5 rounded-full shadow-xl cursor-pointer group hover:opacity-90 transition-opacity"
           >
             <span>Request a concept like this</span>
             <motion.span

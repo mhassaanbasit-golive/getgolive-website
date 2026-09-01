@@ -17,6 +17,16 @@
   --wordmark-end: #F8F8F8;
 
   /* ==========================================================================
+     GLOBAL GLOSSY GLASSMORPHISM SYSTEM
+     ========================================================================== */
+  --glass-bg-dark: rgba(10, 10, 10, 0.7);
+  --glass-bg-light: rgba(255, 255, 255, 0.6);
+  --glass-border-dark: 1px solid rgba(255, 255, 255, 0.08);
+  --glass-border-light: 1px solid rgba(0, 0, 0, 0.08);
+  --glass-shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.2);
+  --glass-shadow-light: 0 10px 30px rgba(0, 0, 0, 0.05);
+
+  /* ==========================================================================
      PREMIUM EASING SYSTEM
      Buttery-smooth deceleration curve with a long, elegant tail for high-end feel
      ========================================================================== */
@@ -167,31 +177,37 @@ textarea {
 .grid > *:nth-child(8), .stagger-grid > *:nth-child(8) { transition-delay: 0.40s; }
 
 /* ==========================================================================
-   3. CARDS (Process, Projects, Pricing, Features, Trust, Form, Glassmorphism)
-   Frosted glass aesthetics adapting smoothly to Dark and Light themes
+   3. GLOBAL GLOSSY GLASSMORPHISM FOR ALL CONTAINERS
+   Frosted glossy glass aesthetics adapting to Dark and Light themes
    ========================================================================== */
 
 .card,
-.spotlight-card,
-.project-card,
-.service-card,
+.container-glass,
+.box,
+.glass,
 .pricing-card,
-.trust-card,
-.testimonial-card,
-.form-card,
+.service-card,
+.project-card,
+.process-card,
 .process-step-card,
-.card-container,
-.hover-lift,
-.rounded-card,
-.glass-card {
+.faq-item,
+.footer-container,
+.navbar-pill,
+.testimonial-card,
+.trust-card,
+.form-card,
+.highlight-card,
+.spotlight-card,
+.glass-card,
+.card-container {
+  background: var(--glass-bg-dark) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: var(--glass-border-dark) !important;
+  box-shadow: var(--glass-shadow-dark) !important;
+  border-radius: 16px !important;
   position: relative;
   overflow: hidden;
-  background-color: var(--surface-card) !important;
-  background: var(--surface-card) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid var(--surface-card-border) !important;
-  box-shadow: var(--surface-card-shadow) !important;
   transition: transform var(--premium-ease),
               background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
@@ -203,49 +219,49 @@ textarea {
   will-change: auto;
 }
 
+/* Maintain custom pill border-radius for navbar pill and circular elements */
+.navbar-pill {
+  border-radius: 9999px !important;
+}
+
+/* LIGHT MODE OVERRIDES (When theme is active) */
+html:not(.dark) .card,
+html:not(.dark) .container-glass,
+html:not(.dark) .box,
+html:not(.dark) .glass,
+html:not(.dark) .pricing-card,
+html:not(.dark) .service-card,
+html:not(.dark) .project-card,
+html:not(.dark) .process-card,
+html:not(.dark) .process-step-card,
+html:not(.dark) .faq-item,
+html:not(.dark) .footer-container,
+html:not(.dark) .navbar-pill,
+html:not(.dark) .testimonial-card,
+html:not(.dark) .trust-card,
+html:not(.dark) .form-card,
+html:not(.dark) .highlight-card,
+html:not(.dark) .spotlight-card,
+html:not(.dark) .glass-card,
+html:not(.dark) .card-container {
+  background: var(--glass-bg-light) !important;
+  border: var(--glass-border-light) !important;
+  box-shadow: var(--glass-shadow-light) !important;
+}
+
 .pricing-card.is-popular {
   border-color: var(--text-primary) !important;
 }
 
-/* ==========================================================================
-   OPTIMIZATION FOR DYNAMIC-HEIGHT COMPONENT REPAINTS
-   Disables heavy backdrop-filter recalculations on dynamic height updates
-   ========================================================================== */
-.service-card,
-.process-step-card,
-#faq .card,
-#faq .glass-card {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  background-color: #FFFFFF !important;
-  background: #FFFFFF !important;
-  will-change: auto !important;
-  border: 1px solid var(--border-color) !important;
-  transition: none !important;
+/* Fullscreen Menu Overlay Glass */
+.fullscreen-menu-overlay {
+  background: rgba(10, 10, 10, 0.9) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
 }
 
-html.dark .service-card,
-html.dark .process-step-card,
-html.dark #faq .card,
-html.dark #faq .glass-card {
-  background-color: #141414 !important;
-  background: #141414 !important;
-  will-change: auto !important;
-  border: 1px solid var(--border-color) !important;
-  transition: none !important;
-}
-
-/* Disable spotlight gradients completely on dynamic-height cards to prevent layout-thrashing repaints */
-.service-card::before,
-.service-card::after,
-.process-step-card::before,
-.process-step-card::after,
-#faq .card::before,
-#faq .card::after,
-#faq .glass-card::before,
-#faq .glass-card::after {
-  display: none !important;
-  content: none !important;
+html:not(.dark) .fullscreen-menu-overlay {
+  background: rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Spotlight Glow Overlay Following Cursor */

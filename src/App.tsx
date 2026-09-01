@@ -40,11 +40,11 @@ export default function App() {
   // Route Change Loading State
   const [isRouteChanging, setIsRouteChanging] = useState(false);
   
-  // Theme State: Default Light mode
+  // Theme State: Default Dark mode (Black)
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     const saved = localStorage.getItem('theme');
     if (saved === 'dark' || saved === 'light') return saved;
-    return 'light';
+    return 'dark';
   });
 
   useEffect(() => {

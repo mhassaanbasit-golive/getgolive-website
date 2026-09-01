@@ -151,12 +151,9 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
           transition={{ type: 'spring', stiffness: 200, damping: 30, duration: 0.3 }}
           style={{
             willChange: 'transform, opacity, backdrop-filter',
-            backdropFilter: 'blur(24px)',
-            WebkitBackdropFilter: 'blur(24px)',
-            backgroundColor: 'rgba(0, 0, 0, 0.6)',
           }}
           onClick={onClose}
-          className="fixed inset-0 z-[999] w-screen h-screen overflow-hidden flex flex-col justify-center"
+          className="fullscreen-menu-overlay fixed inset-0 z-[999] w-screen h-screen overflow-hidden flex flex-col justify-center"
           aria-modal="true"
           role="dialog"
           aria-label="Navigation Menu"
@@ -184,7 +181,7 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
               onClose();
             }}
             aria-label="Close menu"
-            className="magnetic-btn absolute top-4 right-4 md:top-8 md:right-8 w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full border border-white/20 bg-black/40 text-white hover:bg-white hover:text-black transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center cursor-pointer z-50 group focus:outline-none select-none shadow-lg"
+            className="magnetic-btn absolute top-4 right-4 md:top-8 md:right-8 w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full border border-[var(--border-color)] bg-[var(--surface-card)] text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center cursor-pointer z-50 group focus:outline-none select-none shadow-xl"
           >
             <span className="text-[15px] sm:text-[18px] md:text-[20px] leading-none font-normal group-hover:rotate-90 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] font-body">
               ✕
@@ -221,7 +218,7 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
                       letterSpacing: '-0.03em',
                       lineHeight: 1.15,
                     }}
-                    className="font-headline font-semibold text-[clamp(1.3rem,4.2vw,1.8rem)] sm:text-[clamp(1.8rem,5vw,2.5rem)] md:text-[clamp(2.8rem,5.5vw,5.5rem)] text-white group-hover:text-white/60 transition-colors duration-300 ease-out inline-block"
+                    className="font-headline font-semibold text-[clamp(1.3rem,4.2vw,1.8rem)] sm:text-[clamp(1.8rem,5vw,2.5rem)] md:text-[clamp(2.8rem,5.5vw,5.5rem)] text-[var(--text-primary)] group-hover:opacity-60 transition-opacity duration-300 ease-out inline-block"
                   >
                     {item.label}
                   </span>

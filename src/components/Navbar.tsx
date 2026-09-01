@@ -58,7 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Center Column: Floating Glass Nav Pill (Always Perfectly Centered & Aligned) */}
         <div className="flex items-center justify-center">
-          <div className="h-[34px] sm:h-[38px] md:h-[40px] bg-[var(--nav-bg)] backdrop-blur-[14px] border border-[var(--border-color)] px-3 sm:px-4 rounded-full flex items-center justify-center gap-2 sm:gap-3 shadow-md shrink-0 transition-all duration-300">
+          <div className="navbar-pill h-[34px] sm:h-[38px] md:h-[40px] px-3 sm:px-4 rounded-full flex items-center justify-center gap-2 sm:gap-3 shrink-0 transition-all duration-300">
             {/* Left Side: [ Menu ] */}
             <motion.button
               whileHover={{ scale: 1.04, transition: { type: "spring", stiffness: 300, damping: 30 } }}

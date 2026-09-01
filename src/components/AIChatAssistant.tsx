@@ -312,7 +312,7 @@ export const AIChatAssistant: React.FC = () => {
 
   return (
     <>
-      {/* STEP 1: OUTER TRIGGER BUTTON */}
+      {/* STEP 1: OUTER TRIGGER BUTTON - RESPONSIVE & SLEEK ON MOBILE */}
       {!isOpen && (
         <motion.button
           id="getgolive-ai-trigger"
@@ -324,25 +324,16 @@ export const AIChatAssistant: React.FC = () => {
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           style={{
-            position: 'fixed',
-            bottom: '24px',
-            right: '24px',
-            zIndex: 9999,
-            padding: '12px 22px',
-            borderRadius: '999px',
             backgroundColor: 'var(--bg-primary)',
             color: 'var(--text-primary)',
             border: `1px solid ${subtleBorder}`,
             boxShadow: glowShadow,
             fontFamily: "'Inter', sans-serif",
-            fontSize: '14px',
-            fontWeight: 500,
-            cursor: 'pointer',
           }}
-          className="flex items-center gap-2 select-none tracking-normal transition-all"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9999] px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full text-[12px] sm:text-[13.5px] font-medium cursor-pointer flex items-center gap-1.5 sm:gap-2 select-none tracking-normal transition-all shadow-lg hover:opacity-95"
           aria-label="Ask GetGoLive AI"
         >
-          <span>Ask GetGoLive AI</span>
+          <span className="whitespace-nowrap">Ask GetGoLive AI</span>
         </motion.button>
       )}
 
@@ -359,9 +350,9 @@ export const AIChatAssistant: React.FC = () => {
               position: 'fixed',
               inset: 0,
               zIndex: 10000,
-              backgroundColor: isDarkMode ? 'rgba(10, 10, 10, 0.88)' : 'rgba(248, 248, 248, 0.88)',
-              backdropFilter: 'blur(24px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+              backgroundColor: isDarkMode ? 'rgba(10, 10, 10, 0.9)' : 'rgba(255, 255, 255, 0.95)',
+              backdropFilter: 'blur(24px)',
+              WebkitBackdropFilter: 'blur(24px)',
               color: 'var(--text-primary)',
               fontFamily: "'Inter', sans-serif",
             }}
@@ -373,28 +364,24 @@ export const AIChatAssistant: React.FC = () => {
               type="button"
               onClick={handleCloseOverlay}
               style={{
-                position: 'absolute',
-                top: '24px',
-                right: '24px',
-                zIndex: 10010,
                 color: 'var(--text-primary)',
                 backgroundColor: 'transparent',
                 border: 'none',
                 cursor: 'pointer',
               }}
-              className="w-10 h-10 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[10010] w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity"
               aria-label="Close"
             >
-              <X className="w-6 h-6 stroke-[1.5]" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.5]" />
             </button>
 
             {/* Top Header Logo (Exact matching header branding) */}
-            <header className="w-full pt-10 flex items-center justify-center shrink-0">
+            <header className="w-full pt-6 sm:pt-10 flex items-center justify-center shrink-0">
               <GetGoLiveHeaderLogo />
             </header>
 
             {/* Main Interactive Screen Container */}
-            <main className="w-full max-w-[620px] flex-1 flex flex-col justify-center px-6 py-6 overflow-hidden relative">
+            <main className="w-full max-w-[620px] flex-1 flex flex-col justify-center px-4 py-4 sm:px-6 sm:py-6 overflow-hidden relative">
               <AnimatePresence mode="wait">
                 
                 {/* SCREEN 1: TYPING EFFECT + START CHAT BUTTON */}
