@@ -89,6 +89,14 @@ html.dark {
   font-family: 'Inter Tight', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
+.font-cormorant {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+}
+
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
 .font-body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
