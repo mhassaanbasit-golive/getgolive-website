@@ -88,14 +88,6 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
               </li>
               <li>
                 <a
-                  href="#pricing"
-                  className="hover:opacity-70 transition-opacity cursor-pointer block py-0.5"
-                >
-                  Pricing & Plans
-                </a>
-              </li>
-              <li>
-                <a
                   href="#faq"
                   className="hover:opacity-70 transition-opacity cursor-pointer block py-0.5"
                 >

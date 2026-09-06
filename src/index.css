@@ -359,13 +359,12 @@ html.dark .rounded-card:hover {
 .card-badge-reveal,
 .hover-reveal-label {
   opacity: 0;
-  transform: translateY(15px);
+  transform: none !important;
   transition: opacity var(--premium-ease),
-              transform var(--premium-ease),
               background-color var(--premium-ease),
               color var(--premium-ease),
               border-color var(--premium-ease);
-  will-change: transform, opacity;
+  will-change: opacity;
 }
 
 .card:hover .card-hover-element,
@@ -383,7 +382,7 @@ html.dark .rounded-card:hover {
 .process-step-card:hover .card-hover-element,
 .process-step-card:hover .hover-pill {
   opacity: 1 !important;
-  transform: translateY(0) !important;
+  transform: none !important;
 }
 
 /* Corner Arrow Buttons & Arrow Icons */

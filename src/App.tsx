@@ -14,11 +14,11 @@ import { HighlightsSection } from './components/HighlightsSection';
 import { ServicesSection } from './components/ServicesSection';
 import { ProcessSection } from './components/ProcessSection';
 import { TrustSection } from './components/TrustSection';
-import { PricingSection } from './components/PricingSection';
 import { FaqSection } from './components/FaqSection';
 import { FooterSection } from './components/FooterSection';
 import { ProcessPage } from './components/ProcessPage';
 import { ProjectsPage } from './components/ProjectsPage';
+import { ContactPage } from './components/ContactPage';
 import { HunterRealEstatePage } from './components/HunterRealEstatePage';
 import { ByrneCompanyPage } from './components/ByrneCompanyPage';
 import { ScottCarlsonPage } from './components/ScottCarlsonPage';
@@ -211,10 +211,10 @@ export default function App() {
           {currentPage === 'home' && (
             <motion.div
               key="home"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             >
               {/* Section 1: Hero */}
               <HeroSection />
@@ -239,12 +239,6 @@ export default function App() {
               {/* Section 5: The 3-Step Process */}
               <ProcessSection />
 
-              {/* Section 6: Pricing Plans */}
-              <PricingSection
-                onSelectPlan={handleSelectPlan}
-                onOpenModal={handleOpenModal}
-              />
-
               {/* Section 7: Trust & Testimonials */}
               <TrustSection />
 
@@ -263,10 +257,10 @@ export default function App() {
           {currentPage === 'process' && (
             <motion.div
               key="process"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             >
               {/* Page 2: Process / How We Work */}
               <ProcessPage onOpenModal={handleOpenModal} />
@@ -283,10 +277,10 @@ export default function App() {
           {currentPage === 'projects' && (
             <motion.div
               key="projects"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             >
               {/* Page 3: Projects / Portfolio */}
               <ProjectsPage
@@ -304,13 +298,30 @@ export default function App() {
             </motion.div>
           )}
 
+
+
+          {currentPage === 'contact' && (
+            <motion.div
+              key="contact"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+            >
+              <ContactPage
+                onNavigate={handleNavigate}
+                onOpenModal={handleOpenModal}
+              />
+            </motion.div>
+          )}
+
           {currentPage === 'hunter-project' && (
             <motion.div
               key="hunter-project"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             >
               <HunterRealEstatePage
                 onNavigate={handleNavigate}
@@ -328,10 +339,10 @@ export default function App() {
           {currentPage === 'byrne-company' && (
             <motion.div
               key="byrne-company"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             >
               <ByrneCompanyPage
                 onNavigate={handleNavigate}
@@ -349,10 +360,10 @@ export default function App() {
           {currentPage === 'rer-solutions' && (
             <motion.div
               key="rer-solutions"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             >
               <RerSolutionsPage
                 onNavigate={handleNavigate}
@@ -370,10 +381,10 @@ export default function App() {
           {currentPage === 'scott-carlson' && (
             <motion.div
               key="scott-carlson"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             >
               <ScottCarlsonPage
                 onNavigate={handleNavigate}

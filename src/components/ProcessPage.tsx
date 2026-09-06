@@ -10,7 +10,7 @@ interface ProcessPageProps {
 
 export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenModal }) => {
   const headerVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 0 },
     visible: {
       opacity: 1,
       y: 0,

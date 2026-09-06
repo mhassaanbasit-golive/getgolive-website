@@ -24,7 +24,7 @@ export const FaqSection: React.FC = () => {
   const col2 = FAQS.slice(half);
 
   const headerVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 0 },
     visible: {
       opacity: 1,
       y: 0,
@@ -43,7 +43,7 @@ export const FaqSection: React.FC = () => {
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 0 },
     visible: {
       opacity: 1,
       y: 0,

@@ -12,7 +12,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect, ind
   const staggerDelay = (index % 4) * 0.1;
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 0 },
     visible: {
       opacity: 1,
       y: 0,

@@ -184,47 +184,10 @@ export function initAnimationSystem(): () => void {
     });
   };
 
-  // ============================================================================
-  // 4. BIG TEXT PARALLAX ("GETGOLIVE" BACKGROUND WORDMARKS)
-  // ============================================================================
-  const setupBigTextParallax = () => {
-    const wordmarks = document.querySelectorAll<HTMLElement>('.parallax-wordmark, .giant-wordmark-container');
-    if (!wordmarks.length) return;
-
-    let ticking = false;
-
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const scrollY = window.scrollY;
-          document.documentElement.style.setProperty('--scroll-y', `${scrollY}px`);
-
-          wordmarks.forEach((el) => {
-            const rect = el.getBoundingClientRect();
-            // Parallax factor: moves slightly slower than scroll speed
-            const relativeOffset = (rect.top - window.innerHeight / 2) * 0.12;
-            el.style.transform = `translate3d(0, ${relativeOffset}px, 0)`;
-          });
-
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // initial trigger
-
-    cleanups.push(() => {
-      window.removeEventListener('scroll', onScroll);
-    });
-  };
-
   // Run all systems
   setupIntersectionObserver();
   setupSpotlightCards();
   setupMagneticButtons();
-  setupBigTextParallax();
 
   return () => {
     cleanups.forEach((cleanup) => cleanup());

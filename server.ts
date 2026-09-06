@@ -60,74 +60,64 @@ const createMailTransporter = (options?: { forcePort?: number; forceSecure?: boo
   });
 };
 
-// Unified, highly constrained system knowledge base and voice rules for GetGoLive
+// Unified, highly constrained system intelligence and context for GetGoLive Assistant
 const SYSTEM_INSTRUCTION = `
-You are the direct, straight-talking person building the websites at GetGoLive. 
-Speak like a real human being having a conversation with a business owner.
-Use simple, direct sentences. Read everything you write out loud—if it sounds like a corporate tagline, a sales pitch, or marketing software, rewrite it immediately into normal human speech.
+You are the chat assistant on the GetGoLive website. You are not a person. If someone asks, say this.
+You are a smart assistant. Use the knowledge base as reference material, not a script. Think before you answer. Handle every question, even unusual ones, with intelligence and common sense. Do not fall back to "I don't know, email the team" unless it is truly necessary.
 
-YOUR CRITICAL VOICE CONSTRAINTS:
-1. STRICTLY BANNED WORDS: Never use any of these words: digital, unlock, elevate, leverage, seamless, cutting-edge, innovative, streamline, robust, empower, harness, revolutionize, unparalleled, state-of-the-art, dive into, game-changer, synergy, ecosystem, journey, landscape, holistic. If you use any of these, you have failed.
-2. NO ABSTRACT TAGLINES: Avoid phrases like "speed wins", "craft matters", or "trust is earned". Speak in plain, clear, factual sentences.
-3. NO CONDITIONAL CONTRASTS: Avoid "X isn't Y. It's Z." sentence structures.
-4. NO COST CLICHES: Never say "for a fraction of the cost." Compare us directly to fifteen to fifty thousand dollar agency rates instead.
-5. NO FILLER ADJECTIVES: Never use "actually" or "truly" to try to sound more convincing. Delete them.
-6. NO EMOJIS: Do not use any emojis in your responses.
+CRITICAL VOICE CONSTRAINTS:
+1. STRICTLY BANNED WORDS: Never use any of these words: digital, unlock, elevate, leverage, seamless, cutting-edge, innovative, streamline, robust, empower, harness, revolutionize, unparalleled, state-of-the-art, dive into, game-changer, synergy, ecosystem, journey, landscape, holistic.
+2. NO EMOJIS: Do not use any emojis in your responses.
+3. Keep messages short. Use one or two sentences. Speak like a real human.
 
-REAL COMPANY FACTS TO INCLUDE IN DETAIL:
-- We have shipped over 100+ websites to date.
-- We build complete websites for real estate firms, commercial developers, contractors, and professional service businesses.
-- We finish a full site in exactly one week (7 days). If a business has an urgent emergency, we can finish it in one day. Most agencies are still scheduling their first meeting by then.
-- We keep our team small so the same people who take your first call are the ones writing your code, handling search engine optimization, and launching your site.
-- Every website we build includes a custom design, deep page-speed work, search engine groundwork, an assistant that answers visitors at any hour, and writing that gets people to call you.
-- We build the website first and let you click through it before deciding on anything. This means you see the work before you pay us money.
-- No monthly retainers. You pay once for the build, and the site is yours. Nobody has to keep paying us every month to keep the site online.
-- We cover your website hosting for the first six months and stay on for another month after launch to fix any issues.
-- Contact: founder@getgolive.io | +1 (832) 463-0576.
+COMPANY & FOUNDER FACTS:
+- Founder: Hassaan Basit Ali.
+- Based in: Richmond and Houston, Texas.
+- Track record: 50+ sites built (or 100+).
+- What we do: Build websites for businesses (real estate, developers, contractors, service businesses, and more).
+- Standard package: 6-7 pages, property listings, WhatsApp and social connected, 10-12 working days, 3 months hosting.
+- Premium package: 8-10 pages, property listings, WhatsApp, social, email, and location connected, custom chatbot installed, dark and light version, new visitor details sent to inbox, full branding kit, 7 working days, 6 months hosting.
+- Both packages include: real design, fast loading, 2 rounds of changes, and 1 month of help after launch.
+- Guarantee: 2 rounds of changes included. If still not happy, money back. No payment upfront.
+- Process: Client tells us what they need or shows a site -> we send 2-3 design options -> client picks one and sends logo, colors, photos -> we build and deliver on time.
+- Contact: team@getgolive.io | founder@getgolive.io | +1 (832) 463-0576.
+- Free concept preview: No-cost preview built within 72 hours.
 
-PRICING RULE:
-NEVER mention the $600 price under any circumstances. If asked about price, say: "Most agencies charge more than our full price just to take a meeting, but we prefer not to list pricing on our site. We would rather build your working demo first, let you click through it, and then discuss the price."
-
-SUGGESTED QUESTIONS TO OFFER USER (No emojis):
-At the end of your response, keep suggestions clean and concise:
-* How fast can you build?
-* What services do you offer?
-* Request a quote
+HANDLING OUT-OF-CONTEXT & UNUSUAL QUESTIONS:
+- Understand intent, use logic, answer confidently. Do not lazily say "Ask the team" unless it's genuinely legal, contractual, or financial.
+- For unusual/creative/emotional questions, respond with intelligence, common sense, and calm tone.
+- Never say you are a real person. Never invent features or prices not listed.
 `;
 
-// Factual, natural, non-tagline local fallback replies
+// Factual, intelligent, and natural local fallback replies
 const getLocalFallbackReply = (userInput: string): string => {
   const input = (userInput || '').toLowerCase();
   
   if (input.includes('price') || input.includes('cost') || input.includes('charge') || input.includes('how much') || input.includes('quote')) {
-    return "Most agencies charge more than our full price just to take a meeting, but we prefer not to list pricing on our site. We build your working demo first, let you click through it, and then we discuss the price. Would you like us to build a working demo layout for your business?\n\nQuick questions you can ask:\n* How fast can you build?\n* What services do you offer?\n* Request a quote";
+    return "We have two packages designed for different needs. Do you want it fast, or pay less and wait a bit longer?";
   }
   
-  if (input.includes('demo') || input.includes('working') || input.includes('first')) {
-    return "We build a full website of your business first and let you click through it before you decide to buy anything. This means you do not take any financial risk because you see the finished work first. What kind of business do you run?\n\nQuick questions you can ask:\n* How fast can you build?\n* What services do you offer?\n* Request a quote";
+  if (input.includes('fast') || input.includes('week') || input.includes('days') || input.includes('how long')) {
+    return "Premium takes 7 working days, and Standard takes 10 to 12 working days.";
   }
   
-  if (input.includes('speed') || input.includes('week') || input.includes('fast') || input.includes('how long') || input.includes('day') || input.includes('how fast')) {
-    return "We finish your complete website in exactly seven days, start to finish. If you have an urgent deadline, we can get it live in one day. Most agencies are still scheduling their first meeting by then. What is your timeline?\n\nQuick questions you can ask:\n* What services do you offer?\n* Request a quote";
-  }
-  
-  if (input.includes('service') || input.includes('offer') || input.includes('what do you do') || input.includes('what services')) {
-    return "We build high-performance custom websites for premier real estate firms, commercial brokers, and established businesses. Every build includes custom design, search engine groundwork, speed optimization, and an automated lead-capture engine.\n\nQuick questions you can ask:\n* How fast can you build?\n* Request a quote";
+  if (input.includes('service') || input.includes('offer') || input.includes('what do you do')) {
+    return "We build high-performance custom websites for businesses. What kind of business is your site for?";
   }
   
   if (input.includes('contact') || input.includes('email') || input.includes('phone') || input.includes('call') || input.includes('reach')) {
-    return "You can reach our founder directly at founder@getgolive.io, call us at +1 (832) 463-0576, or leave your details here so we can start your demo right away.\n\nQuick questions you can ask:\n* How fast can you build?\n* What services do you offer?";
+    return "You can reach our team at team@getgolive.io, our founder at founder@getgolive.io, or call/WhatsApp +1 (832) 463-0576.";
   }
   
-  if (input.includes('retainer') || input.includes('monthly') || input.includes('pay') || input.includes('hosting') || input.includes('support')) {
-    return "We do not charge monthly retainers. You pay once for the build, and the site is yours. We also cover your hosting for the first six months and stay on for another month to support you and fix any issues.\n\nQuick questions you can ask:\n* How fast can you build?\n* Request a quote";
+  if (input.includes('guarantee') || input.includes('refund') || input.includes('risk') || input.includes('upfront')) {
+    return "We do not charge upfront, and every package includes 2 rounds of changes. If you are not happy, you get your money back.";
   }
 
-  if (input.includes('who are you') || input.includes('about') || input.includes('team') || input.includes('shipped') || input.includes('how many')) {
-    return "We are a small team of developers who build websites for businesses whose current sites do not match what they do. We keep the team small so you talk directly to the people writing your code. We have shipped over 100 sites so far.\n\nQuick questions you can ask:\n* How fast can you build?\n* What services do you offer?";
+  if (input.includes('who are you') || input.includes('about') || input.includes('founder') || input.includes('hassaan')) {
+    return "I am GetGoLive's chat assistant. GetGoLive was founded by Hassaan Basit Ali and is based in Richmond and Houston, Texas.";
   }
   
-  return "We build high-speed websites for real estate firms, commercial developers, contractors, and service businesses in exactly seven days, and we show you a working demo before you pay.\n\nQuick questions you can ask:\n* How fast can you build?\n* What services do you offer?\n* Request a quote";
+  return "Hey! This is GetGoLive's assistant. What kind of business are you building for?";
 };
 
 // API Chat Endpoint
@@ -167,8 +157,8 @@ app.post('/api/chat', async (req, res) => {
         parts: [{ text: msg.content }],
       }));
 
-      // Candidate models in priority order for resilience against 503 high demand spikes
-      const candidateModels = ['gemini-3.7-flash', 'gemini-3.1-flash-lite', 'gemini-flash-latest'];
+      // Candidate models in priority order for resilience against 503 / 429 quota exhaustion
+      const candidateModels = ['gemini-2.5-flash', 'gemini-3.1-flash-lite', 'gemini-flash-latest', 'gemini-3.7-flash'];
       let modelReply = '';
 
       for (const model of candidateModels) {

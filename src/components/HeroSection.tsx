@@ -57,7 +57,7 @@ export const HeroSection: React.FC = () => {
       <div className="hero-container relative z-10 w-full px-4 sm:px-6 md:px-12 my-auto global-mobile-container text-center py-6 sm:py-12 md:py-20">
         <div className="max-w-[1400px] mx-auto flex justify-center text-center">
           <motion.div
-            initial={{ opacity: 0, y: 32 }}
+            initial={{ opacity: 0, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 150, damping: 35 }}
             style={{ willChange: 'transform, opacity' }}
@@ -83,7 +83,7 @@ export const HeroSection: React.FC = () => {
           {/* Bottom Right Scroll Cue */}
           <motion.a
             href="#mockup"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 150, damping: 35, delay: 0.25 }}
             style={{ willChange: 'transform, opacity' }}

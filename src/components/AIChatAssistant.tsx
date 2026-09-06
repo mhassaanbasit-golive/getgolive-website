@@ -53,7 +53,7 @@ export const AIChatAssistant: React.FC = () => {
     {
       id: 'bot-initial-1',
       sender: 'bot',
-      text: 'Hello. How can I help you today? Ask me about our 7-day delivery, pricing, or custom builds.',
+      text: 'Hello!',
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     },
   ]);
@@ -175,6 +175,15 @@ export const AIChatAssistant: React.FC = () => {
 
     soundController.playSoftClick();
     setFormErrors({});
+    const clientName = userDetails.fullName.trim();
+    setMessages([
+      {
+        id: `bot-initial-${Date.now()}`,
+        sender: 'bot',
+        text: clientName ? `Hey ${clientName}! I'm the GetGoLive assistant. What can I help you with today?` : `Hey! I'm the GetGoLive assistant. What can I help you with today?`,
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      },
+    ]);
     setCurrentScreen('chat');
 
     // Notify backend of session init
@@ -356,7 +365,7 @@ export const AIChatAssistant: React.FC = () => {
               color: 'var(--text-primary)',
               fontFamily: "'Inter', sans-serif",
             }}
-            className="flex flex-col items-center justify-between overflow-hidden"
+            className="flex flex-col items-center justify-between overflow-y-auto"
           >
             {/* Close Button */}
             <button
@@ -615,7 +624,7 @@ export const AIChatAssistant: React.FC = () => {
                     initial="initial"
                     animate="animate"
                     exit="exit"
-                    className="w-full h-[70vh] max-h-[620px] flex flex-col justify-between"
+                    className="w-full h-[calc(100vh-130px)] sm:h-[70vh] max-h-[620px] flex flex-col justify-between"
                   >
                     {/* Chat Messages */}
                     <div className="flex-1 overflow-y-auto pr-1 space-y-3.5 py-2 scrollbar-none">

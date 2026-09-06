@@ -87,28 +87,14 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
       },
     },
     {
-      id: 'pricing',
-      label: 'Pricing & Retainer',
-      delay: 0.4,
-      className: 'menu-link-4',
-      action: () => {
-        onNavigate('home');
-        onClose();
-        setTimeout(() => {
-          document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
-        }, 150);
-      },
-    },
-    {
       id: 'contact',
       label: 'Contact & Consultation',
-      delay: 0.5,
+      delay: 0.4,
       className: 'menu-link-5',
       action: () => {
+        onNavigate('contact');
         onClose();
-        setTimeout(() => {
-          document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-        }, 150);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       },
     },
   ];

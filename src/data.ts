@@ -1,4 +1,4 @@
-import { CaseStudy, ServiceDetail, PricingPlan, Project, Testimonial } from './types';
+import { CaseStudy, ServiceDetail, Project, Testimonial } from './types';
 
 export interface ProcessStep {
   stepNumber: string;
@@ -145,9 +145,9 @@ export const SERVICES: ServiceDetail[] = [
     description: 'We can add an AI assistant that answers common questions, helps visitors find information, and guides them toward the next step when nobody is available.',
     deliverables: [
       'Answers visitors at any hour, including nights and weekends',
-      'Knows the basics of your business on every plan',
-      'Knows your live listings and pricing on Premium and up',
-      'Full business context and deep detail on Enterprise',
+      'Knows the basics of your business',
+      'Knows your live listings and details',
+      'Full business context and deep detail',
       'Routes serious inquiries straight to your inbox'
     ],
     buttonText: 'Inquire for The Assistant →'
@@ -179,53 +179,6 @@ export const SERVICES: ServiceDetail[] = [
       'Inquiries answered under an hour, every time'
     ],
     buttonText: 'Inquire for Lead Capture →'
-  }
-];
-
-export const PRICING_PLANS: PricingPlan[] = [
-  {
-    id: 'standard',
-    name: 'Standard',
-    price: '',
-    billing: '',
-    features: [
-      '5 custom-designed pages',
-      'Assistant trained on the basics of your business',
-      'Fully responsive, mobile-first build',
-      'Property listings linked to your MLS',
-      'Six months of hosting included'
-    ]
-  },
-  {
-    id: 'premium',
-    name: 'Premium',
-    price: '',
-    billing: '',
-    popular: true,
-    features: [
-      '10 custom-designed pages',
-      'Assistant trained on your live listings and pricing',
-      'Full animation and motion throughout the site',
-      'Instant lead form',
-      'Sharper load speed and deeper SEO setup',
-      'Six months of hosting included',
-      'Delivered in 7 days'
-    ]
-  },
-  {
-    id: 'enterprise',
-    name: 'Enterprise',
-    price: '',
-    billing: '',
-    features: [
-      'Unlimited custom pages',
-      'Assistant trained on full business context, including pricing, inventory, and history',
-      'Advanced property search and filtering',
-      'Our fastest load times and deepest SEO build',
-      'Dedicated priority support',
-      'Six months of hosting included',
-      'Delivered in 7 days'
-    ]
   }
 ];
 

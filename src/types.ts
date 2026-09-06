@@ -1,4 +1,4 @@
-export type PageType = 'home' | 'process' | 'projects' | 'hunter-project' | 'byrne-company' | 'rer-solutions' | 'scott-carlson';
+export type PageType = 'home' | 'process' | 'projects' | 'contact' | 'hunter-project' | 'byrne-company' | 'rer-solutions' | 'scott-carlson';
 
 export type ModalType = 'menu' | 'concept' | 'contact' | 'case-study' | 'service' | 'project-detail' | null;
 
@@ -47,11 +47,4 @@ export interface Testimonial {
   avatarInitials?: string;
 }
 
-export interface PricingPlan {
-  id: string;
-  name: string;
-  price: string;
-  billing: string;
-  popular?: boolean;
-  features: string[];
-}
+

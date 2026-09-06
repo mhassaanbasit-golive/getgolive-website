@@ -19,7 +19,7 @@ export const ProcessSection: React.FC = () => {
   };
 
   const headerVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 0 },
     visible: {
       opacity: 1,
       y: 0,
@@ -38,7 +38,7 @@ export const ProcessSection: React.FC = () => {
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 0 },
     visible: {
       opacity: 1,
       y: 0,
